@@ -1,0 +1,22 @@
+Using openGL stuff in applications
+
+Assumes Dialog based app...see oglAppDlg.cpp and oglAppDlg.h for examples
+
+Add a CCleanGLWnd* member variable to the dialog class
+In the dialog constructor, create a new CCleanGLWnd object
+In the dialog destructor, delete the object
+In the dialog resource, create a placeholder for the upper left corner of the OpenGL view
+In InitDialog(), create and position the window
+In the dialogs OnSize handler, reposition the openGL window
+
+CCleanGLWnd (and COpenGLWnd base class) require the following classes
+	CImage
+		CImageProgress
+		CDib
+	CFileSpec
+
+The project needs to include opengl libs and image libs
+linker settings for libraries:
+	opengl32.lib glu32.lib ..\common\image\jpeg.lib ..\common\image\tlib.lib 
+
+The project also needs the IDD_IMAGELOADPROGRESS dialog to go with the CImage class progress reporting capability
